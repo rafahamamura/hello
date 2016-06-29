@@ -13,11 +13,29 @@
 </head>
 <body class="ui-mobile-viewport ui-overlay-a">
 
-<div data-role="page">
+<div data-role="page" id="rota">
+	<div data-role="panel" id="left-panel">
+ 		<div class="ui-panel-inner">
+ 			<ul data-role="listview" class="ui-listview">
+ 				<li class="ui-li-static ui-body-inherit">
+					<a href="#rota">Definir Rota</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#mapa">Mapa</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#about">Sobre</a>
+ 				</li>
+ 			</ul>
+ 		</div>
+    </div>
 
+	<!-- header -->
 	<div data-role="header">
-		<h1>Hello World</h1>
+		<h1>Definir Rota</h1>
+		<a href="#left-panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext"></a>
 	</div>
+	<!-- /header -->
 
 	<div role="main" class="ui-content">
 		<p>Page content!</p>
@@ -26,8 +44,47 @@
 	<div data-role="footer">
 		<h4>Page footer</h4>
 	</div>
+</div>
 
-</div>	
+<div data-role="page" id="mapa" style="height:100%; width:100%; padding:0">
+	<div data-role="panel" id="left-panel">
+ 		<div class="ui-panel-inner">
+ 			<ul data-role="listview" class="ui-listview">
+ 				<li class="ui-li-static ui-body-inherit">
+					<a href="#rota">Definir Rota</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#mapa">Mapa</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#about">Sobre</a>
+ 				</li>
+ 			</ul>
+ 		</div>
+    </div>
+
+	<!-- header -->
+	<div data-role="header">
+		<h1>Mapa</h1>
+		<a href="#left-panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext"></a>
+	</div>
+	<!-- /header -->
+
+	<div role="main" class="ui-content" id="map-canvas" style="height:100%; width: 100%; padding:0">
+	</div>
+	<script>
+		function initMap() {
+		  var pos = new google.maps.LatLng(-34.397,150.644);
+		  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+		    zoom: 8,
+		    center: pos,
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		  });
+		  //$('#map-canvas').gmap({'center': pos, 'zoom':17});
+		}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0&signed_in=true&callback=initMap" async defer></script>
+</div>
 
 </body>
 </html>
