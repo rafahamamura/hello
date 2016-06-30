@@ -18,7 +18,7 @@
   <access origin="*" subdomains="true"/>
 
   <plugin name="plugin.google.maps.menusito" spec="1.2.5" source="pgb">
-    <param name="APIKey" value="AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0" />
+    <param name="API_KEY_FOR_ANDROID" value="AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0" />
   </plugin>
 
 </widget>
