@@ -17,6 +17,6 @@
 
   <access origin="*" subdomains="true"/>
 
-  <plugin name="plugin.google.maps.menusito" spec="1.4.5" source="pgb" />
+  <plugin name="plugin.google.maps.menusito" spec="1.2.5" source="pgb" />
 
 </widget>
