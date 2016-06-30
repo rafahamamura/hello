@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	
 	<title>HelloWorld</title>
 	
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css">
-
-	<script src="js/jquery-1.11.3.min.js"></script>
-
+	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body class="ui-mobile-viewport ui-overlay-a">
@@ -30,7 +28,6 @@
  		</div>
     </div>
 
-	<!-- header -->
 	<div data-role="header">
 		<h1>Definir Rota</h1>
 		<a href="#left-panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext"></a>
@@ -46,7 +43,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="mapa" style="height:100%; width:100%; padding:0">
+<div data-role="page" id="mapa">
 	<div data-role="panel" id="left-panel">
  		<div class="ui-panel-inner">
  			<ul data-role="listview" class="ui-listview">
@@ -63,27 +60,64 @@
  		</div>
     </div>
 
-	<!-- header -->
-	<div data-role="header">
+	<div data-role="header" id="cabecalho">
 		<h1>Mapa</h1>
 		<a href="#left-panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext"></a>
 	</div>
 	<!-- /header -->
 
-	<div role="main" class="ui-content" id="map-canvas" style="height:100%; width: 100%; padding:0">
+	<div role="main" class="ui-content" id="map-canvas" style="padding:0; margin: auto; border: 0px ">
 	</div>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd1xQ714eh4NibB5tW5jz-HdEhJrRUh-o&language=pt-BR&sensor=false"></script>
 	<script>
+		var map;
 		function initMap() {
-		  var pos = new google.maps.LatLng(-34.397,150.644);
-		  var map = new google.maps.Map(document.getElementById('map-canvas'), {
-		    zoom: 8,
-		    center: pos,
-		    mapTypeId: google.maps.MapTypeId.ROADMAP
-		  });
-		  //$('#map-canvas').gmap({'center': pos, 'zoom':17});
+		  var pos = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+		  var opcao = {	zoom: 8,
+		    			center: pos,
+		    			mapTypeId: google.maps.MapTypeId.ROADMAP};
+
+		  map = new google.maps.Map(document.getElementById('map-canvas'), opcao);
+		  var hPagina = $(window).height();
+		  var hHeader = 46;
+		  alert("Pagina: " + hPagina + "\n" + "Cabeçalho: " + hHeader);
+
+		  $('#map-canvas').height(hPagina - hHeader);
 		}
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0&signed_in=true&callback=initMap" async defer></script>
+		initMap();
+    </script>    
+</div>
+
+<div data-role="page" id="about">
+	<div data-role="panel" id="left-panel">
+ 		<div class="ui-panel-inner">
+ 			<ul data-role="listview" class="ui-listview">
+ 				<li class="ui-li-static ui-body-inherit">
+					<a href="#rota">Definir Rota</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#mapa">Mapa</a>
+ 				</li>
+ 				<li class="ui-li-static ui-body-inherit">
+ 					<a href="#about">Sobre</a>
+ 				</li>
+ 			</ul>
+ 		</div>
+    </div>
+
+	<div data-role="header">
+		<h1>Sobre</h1>
+		<a href="#left-panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext"></a>
+	</div>
+	<!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Versão 1.0</p>
+	</div>
+
+	<div data-role="footer">
+		<h4>Page footer</h4>
+	</div>
 </div>
 
 </body>
