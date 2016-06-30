@@ -8,8 +8,13 @@
 	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css">
 	<script src="js/jquery-2.1.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$( window ).on( "orientationchange", function( event ) {
+  			location.reload();
+		});
+	</script>
 </head>
-<body class="ui-mobile-viewport ui-overlay-a">
+<body class="ui-mobile-viewport">
 
 <div data-role="page" id="rota">
 	<div data-role="panel" id="left-panel">
@@ -43,7 +48,7 @@
 	</div>
 </div>
 
-<div data-role="page" id="mapa">
+<div data-role="page" id="mapa" data-dom-cache="false">
 	<div data-role="panel" id="left-panel">
  		<div class="ui-panel-inner">
  			<ul data-role="listview" class="ui-listview">
@@ -68,24 +73,28 @@
 
 	<div role="main" class="ui-content" id="map-canvas" style="padding:0; margin: auto; border: 0px ">
 	</div>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd1xQ714eh4NibB5tW5jz-HdEhJrRUh-o&language=pt-BR&sensor=false"></script>
 	<script>
 		var map;
 		function initMap() {
 		  var pos = new google.maps.LatLng(-18.8800397, -47.05878999999999);
 		  var opcao = {	zoom: 8,
 		    			center: pos,
+		    			mapTypeControl: false,
+		    			streetViewControl: false,
 		    			mapTypeId: google.maps.MapTypeId.ROADMAP};
 
 		  map = new google.maps.Map(document.getElementById('map-canvas'), opcao);
 		  var hPagina = $(window).height();
 		  var hHeader = 46;
-		  alert("Pagina: " + hPagina + "\n" + "Cabeçalho: " + hHeader);
 
 		  $('#map-canvas').height(hPagina - hHeader);
 		}
-		initMap();
-    </script>    
+		$('#map-canvas').on('pagecontainerload', function(){
+			delay(100);
+			location.reload();
+		});
+	</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0&language=pt-BR&callback=initMap" async defer></script>
 </div>
 
 <div data-role="page" id="about">
