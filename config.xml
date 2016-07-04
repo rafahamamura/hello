@@ -17,7 +17,11 @@
 
   <access origin="*" subdomains="true"/>
 
-  <plugin name="plugin.google.maps" spec="1.3.9" source="npm">
+  <config-file platform="android" parent="/manifest">
+    <uses-sdk tools:overrideLibrary="org.apache.cordova,com.library.plugin" />
+  </config-file>
+
+  <plugin name="cordova-plugin-googlemaps" spec="1.3.9" source="npm">
     <param name="API_KEY_FOR_ANDROID" value="AIzaSyDCqKxQ45R2AETUMh0YgQmo_l2HqqVpzR0" />
   </plugin>
 
